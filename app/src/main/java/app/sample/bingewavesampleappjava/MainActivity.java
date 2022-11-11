@@ -20,8 +20,8 @@ import java.util.HashMap;
 import app.sample.bingewavesampleappjava.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String URL = "[replace_with_widget_webview_url]";
-    private static final String AUTH_TOKEN = "[replace_width_user_auth_token]";
+    private static final String URL = "https://widgets.bingewave.com/webrtc/7be5952f-65e9-4d99-8e27-00975e8583a7";
+    private static final String AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjM0MzA4NTUsImV4cCI6MTc1MzQzMDg1NSwiaXNzIjoibG9jYWxob3N0IiwicmVmZXJlbmNlX2lkIjoiM2Y1ZTA4MGMtZjUxNC00ZGVhLWI4NmQtNzExYzEwMTBmNzExIiwidHlwZSI6ImRpc3RyaWJ1dG9yIiwiZGlkIjoiMGM1Nzg3YTEtMWZmYS00MzQ5LWE4OTctYjA4NmFkY2U5MWVlIn0.8MOgvDE_31ARi7fzhVQBQOFwFGK52TTUYLEpjqYV3vs";
     private static final int PERMISSION_REQUEST_CODE = 1001;
     private ActivityMainBinding binding;
 
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> mapHeader = new HashMap<String, String>();
         mapHeader.put("Authorization","Bearer "+AUTH_TOKEN);
         webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         webView.setWebChromeClient(new WebChromeClient(){
             @Override
             public void onPermissionRequest(PermissionRequest request) {
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
         }
-
 
     }
 
